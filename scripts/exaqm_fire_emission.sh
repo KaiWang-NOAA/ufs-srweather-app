@@ -162,7 +162,7 @@ file hsi_log_fn in the DATA directory for details:
       err_exit "${message_txt}"
     fi
   fi
-fi
+#fi
 
 mv ${aqm_fire_file_fn}  temp.nc
 ncrename -v PM2.5,PM25 temp.nc temp1.nc
@@ -172,6 +172,9 @@ ncap2 -s 'where(Latitude <=49 && land_cover == 3 ) PM25 = PM25 * 0.55555'   temp
 ncap2 -s 'where(Latitude <=49 && land_cover == 4 ) PM25 = PM25 * 0.55555'   temp4.nc temp5.nc
 ncrename -v PM25,PM2.5 temp5.nc temp6.nc
 mv temp6.nc ${aqm_fire_file_fn}
+
+fi
+
 cp "${DATA}/${aqm_fire_file_fn}" ${FIRE_EMISSION_STAGING_DIR}
 #
 #-----------------------------------------------------------------------
