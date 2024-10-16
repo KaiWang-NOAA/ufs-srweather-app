@@ -619,12 +619,12 @@ fi
 #
 #-----------------------------------------------------------------------
 #
-# Call the function that creates the UFS run-time configuration file 
+# Call the function that creates the NEMS run-time configuration file 
 # within each cycle directory.
 #
 #-----------------------------------------------------------------------
 #
- $USHdir/create_ufs_configure_file.py \
+ $USHdir/create_nems_configure_file.py \
   --path-to-defns ${GLOBAL_VAR_DEFNS_FP} \
   --run-dir "${DATA}"
 export err=$?
