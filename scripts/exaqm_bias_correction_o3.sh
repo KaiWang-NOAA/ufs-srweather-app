@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -ax
+set -xe
 
 msg="JOB $job HAS BEGUN"
 postmsg "$msg"
@@ -36,6 +36,7 @@ source_config_for_task "cpl_aqm_parm|task_bias_correction_o3" ${GLOBAL_VAR_DEFNS
 scrfunc_fp=$( $READLINK -f "${BASH_SOURCE[0]}" )
 scrfunc_fn=$( basename "${scrfunc_fp}" )
 scrfunc_dir=$( dirname "${scrfunc_fp}" )
+echo "hjp111"
 #
 #-----------------------------------------------------------------------
 #
@@ -83,6 +84,7 @@ else
   All executables will be submitted with command \'${RUN_CMD_SERIAL}\'."
 fi
 
+echo "hjp112"
 yyyy=${PDY:0:4}
 yyyymm=${PDY:0:6}
 yyyy_m1=${PDYm1:0:4}
@@ -115,6 +117,7 @@ fi
 
 mkdir -p "${DATA}/data"
 
+echo "hjp113"
 # Retrieve real-time airnow data for the last three days and convert them into netcdf
   for ipdym in {1..3}; do
     case $ipdym in
@@ -164,6 +167,7 @@ mkdir -p "${DATA}/data"
 # STEP 2:  Extracting PM2.5, O3, and met variables from CMAQ input and outputs
 #-----------------------------------------------------------------------------
 
+echo "hjp114"
 FCST_LEN_HRS=$( printf "%03d" ${FCST_LEN_HRS} )
 ic=1
 while [ $ic -lt 120 ]; do
@@ -186,6 +190,7 @@ if [ -d "${DATA_grid}/${cyc}z/${PDY}" ]; then
   rm -rf "${DATA_grid}/${cyc}z/${PDY}"
 fi
 
+echo "hjp115"
 mkdir -p "${DATA_grid}/${cyc}z/${PDY}"
 cpreq ${COMIN}/${cyc}/${NET}.${cycle}.chem_sfc.*.nc ${DATA_grid}/${cyc}z/${PDY}
 cpreq ${COMIN}/${cyc}/${NET}.${cycle}.met_sfc.*.nc ${DATA_grid}/${cyc}z/${PDY}
@@ -210,6 +215,7 @@ if [ -e "${pgmout}" ]; then
    cat ${pgmout}
 fi
 
+echo "hjp116"
 if [ "${DO_AQM_SAVE_AIRNOW_HIST}" = "TRUE" ]; then
   mkdir -p ${COMOUTbicor}/bcdata.${yyyymm}/interpolated/ozone/${yyyy}
   cpreq ${DATA}/out/ozone/${yyyy}/*nc ${COMOUTbicor}/bcdata.${yyyymm}/interpolated/ozone/${yyyy}
@@ -262,6 +268,7 @@ if [ "${DO_AQM_SAVE_AIRNOW_HIST}" = "TRUE" ]; then
   cpreq ${COMIN}/${cyc}/${NET}.${cycle}.*_sfc.f*.nc ${COMOUTbicor}/bcdata.${yyyymm}/grid/${cyc}z/${PDY}
 fi
 
+echo "hjp117"
 #-----------------------------------------------------------------------------
 # STEP 4:  Performing Bias Correction for Ozone
 #-----------------------------------------------------------------------------

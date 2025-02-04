@@ -33,6 +33,7 @@ dy_tracer_map_start: 11
 {%- endif %}
 
 ctm_aod: true
+ctm_wb_dust: false 
 ctm_pmdiag: true
 ctm_stdout: maintask
 
@@ -157,7 +158,7 @@ anthro_species::
 #
 # dust
 #
-dust_type: fengsha
+#dust_type: fengsha
 dust_format: netcdf
 dust_file: {{ aqm_rc_dust_file_fp }}
 dust_frequency: monthly
@@ -286,6 +287,7 @@ fire_type: gbbepx
 fire_file: {{ aqm_rc_fire_file_fp }}
 fire_frequency: {{ aqm_rc_fire_frequency }}
 fire_plume_rise: sofiev
+fire_plume_top_fraction: 0.85
 fire_species::
     PAL     0.0006     PM2.5       KG/M2/S
     PCA     0.0039     PM2.5       KG/M2/S
@@ -348,11 +350,14 @@ pt_stack_temperature: STKTK
 pt_stack_velocity:    STKVE
 pt_species::
     ACET          1.0000  ACET          MOL/S
+    ACROLEIN      1.0000  ACROLEIN      MOL/S
     ALD2          1.0000  ALD2          MOL/S
     ALD2_PRIMARY  1.0000  ALD2_PRIMARY  MOL/S
     ALDX          1.0000  ALDX          MOL/S
     BENZ          1.0000  BENZ          MOL/S
+    BUTADIENE13   1.0000  BUTADIENE13   MOL/S
     CH4           1.0000  CH4           MOL/S
+    CL2           1.0000  CL2           MOL/S
     CO            1.0000  CO            MOL/S
     ETH           1.0000  ETH           MOL/S
     ETHA          1.0000  ETHA          MOL/S
@@ -360,6 +365,7 @@ pt_species::
     ETOH          1.0000  ETOH          MOL/S
     FORM          1.0000  FORM          MOL/S
     FORM_PRIMARY  1.0000  FORM_PRIMARY  MOL/S
+    HCL           1.0000  HCL           MOL/S
     HONO          1.0000  HONO          MOL/S
     IOLE          1.0000  IOLE          MOL/S
     ISOP          1.0000  ISOP          MOL/S
